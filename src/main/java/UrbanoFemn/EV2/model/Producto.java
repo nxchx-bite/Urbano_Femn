@@ -52,10 +52,6 @@ public class Producto {
     @Column(nullable = false, length = 50)
     private String color;
 
-    // URL de imagen referencial.
-    @Column(length = 500)
-    private String imagenUrl;
-
     // Permite ocultar productos sin eliminarlos.
     @Column(nullable = false)
     private Boolean activo;
