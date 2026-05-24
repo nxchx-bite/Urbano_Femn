@@ -6,9 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 
-// Permite acceder a los datos de la entidad Marca.
-
-
 public interface MarcaRepository extends JpaRepository<Marca, Long> {
 
     List<Marca> findByActivaTrue();

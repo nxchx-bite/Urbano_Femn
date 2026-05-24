@@ -6,9 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.math.BigDecimal;
 import java.util.List;
 
-// Permite operaciones CRUD y búsquedas específicas
-// para el catálogo de productos.
-
 
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
 

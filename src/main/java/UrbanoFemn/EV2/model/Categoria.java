@@ -22,16 +22,12 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Nombre de la categoría.
-    // Ejemplo: "Poleras"
     @Column(nullable = false, length = 100, unique = true)
     private String nombre;
 
-    // Descripción breve de la categoría.
     @Column(length = 255)
     private String descripcion;
 
-    // Permite activar o desactivar la categoría sin eliminarla.
     @Column(nullable = false)
     private Boolean activa;
 }
