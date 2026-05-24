@@ -1,5 +1,5 @@
 package UrbanoFemn.EV2.controller;
-<<<<<<< HEAD
+
 import UrbanoFemn.EV2.dto.CategoriaRequestDTO;
 import UrbanoFemn.EV2.dto.CategoriaResponseDTO;
 import UrbanoFemn.EV2.service.CategoriaService;
@@ -7,7 +7,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 
@@ -76,9 +75,6 @@ public class CategoriaController {
 
         return ResponseEntity.ok(categoriaService.buscarPorNombre(nombre));
     }
-=======
 
-public class CategoriaController {
-
->>>>>>> 1e8e949bda6fe594fb13ae0fa5e785a168c0eb46
 }
+
