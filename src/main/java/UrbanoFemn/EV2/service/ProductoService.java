@@ -121,57 +121,57 @@ public class ProductoService {
 
             return mapToDTO(actualizado);
         });
-    }
+        }
 
-    public void eliminar(Long id) {
-        log.warn("Eliminando producto con ID: {}", id);
-        productoRepository.deleteById(id);
-    }
+        public void eliminar(Long id) {
+                log.warn("Eliminando producto con ID: {}", id);
+                productoRepository.deleteById(id);
+        }
 
-    public List<ProductoResponseDTO> buscarPorNombre(String nombre) {
-        log.info("Buscando productos por nombre: {}", nombre);
+        public List<ProductoResponseDTO> buscarPorNombre(String nombre) {
+                log.info("Buscando productos por nombre: {}", nombre);
 
-        return productoRepository.findByNombreContainingIgnoreCase(nombre)
+                return productoRepository.findByNombreContainingIgnoreCase(nombre)
+                        .stream()
+                        .map(this::mapToDTO)
+                        .collect(Collectors.toList());
+        }
+
+        public List<ProductoResponseDTO> buscarPorCategoria(Long categoriaId) {
+                log.info("Buscando productos por categoría ID: {}", categoriaId);
+
+                return productoRepository.findByCategoriaId(categoriaId)
+                        .stream()
+                        .map(this::mapToDTO)
+                        .collect(Collectors.toList());
+        }
+
+        public List<ProductoResponseDTO> buscarPorMarca(Long marcaId) {
+                log.info("Buscando productos por marca ID: {}", marcaId);
+
+                return productoRepository.findByMarcaId(marcaId)
+                        .stream()
+                        .map(this::mapToDTO)
+                        .collect(Collectors.toList());
+        }
+
+        public List<ProductoResponseDTO> buscarPorPrecioMaximo(BigDecimal precioMax) {
+                log.info("Buscando productos con precio menor o igual a: {}", precioMax);
+
+                return productoRepository.findByPrecioLessThanEqual(precioMax)
+                        .stream()
+                        .map(this::mapToDTO)
+                        .collect(Collectors.toList());
+        }
+
+        public List<ProductoResponseDTO> buscarPorColor(String color) {
+        log.info("Buscando productos por color: {}", color);
+
+        return productoRepository.findByColorContainingIgnoreCase(color)
                 .stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
-    }
-
-    public List<ProductoResponseDTO> buscarPorCategoria(Long categoriaId) {
-        log.info("Buscando productos por categoría ID: {}", categoriaId);
-
-        return productoRepository.findByCategoriaId(categoriaId)
-                .stream()
-                .map(this::mapToDTO)
-                .collect(Collectors.toList());
-    }
-
-    public List<ProductoResponseDTO> buscarPorMarca(Long marcaId) {
-        log.info("Buscando productos por marca ID: {}", marcaId);
-
-        return productoRepository.findByMarcaId(marcaId)
-                .stream()
-                .map(this::mapToDTO)
-                .collect(Collectors.toList());
-    }
-
-    public List<ProductoResponseDTO> buscarPorPrecioMaximo(BigDecimal precioMax) {
-        log.info("Buscando productos con precio menor o igual a: {}", precioMax);
-
-        return productoRepository.findByPrecioLessThanEqual(precioMax)
-                .stream()
-                .map(this::mapToDTO)
-                .collect(Collectors.toList());
-    }
-
-    public List<ProductoResponseDTO> buscarPorColor(String color) {
-    log.info("Buscando productos por color: {}", color);
-
-    return productoRepository.findByColorContainingIgnoreCase(color)
-            .stream()
-            .map(this::mapToDTO)
-            .collect(Collectors.toList());
-}
+        }
 
         public List<ProductoResponseDTO> buscarPorTalla(String talla) {
         log.info("Buscando productos por talla: {}", talla);
