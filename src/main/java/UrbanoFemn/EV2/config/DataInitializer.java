@@ -9,6 +9,7 @@ import UrbanoFemn.EV2.repository.ProductoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -18,6 +19,7 @@ import java.math.BigDecimal;
 @Slf4j
 @Component
 @RequiredArgsConstructor
+@Profile("!dev")
 public class DataInitializer implements CommandLineRunner {
 
     private final CategoriaRepository categoriaRepository;
