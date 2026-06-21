@@ -164,4 +164,58 @@ public class ProductoService {
                 .collect(Collectors.toList());
     }
 
+    public List<ProductoResponseDTO> buscarPorColor(String color) {
+    log.info("Buscando productos por color: {}", color);
+
+    return productoRepository.findByColorContainingIgnoreCase(color)
+            .stream()
+            .map(this::mapToDTO)
+            .collect(Collectors.toList());
+}
+
+        public List<ProductoResponseDTO> buscarPorTalla(String talla) {
+        log.info("Buscando productos por talla: {}", talla);
+
+        return productoRepository.findByTallaContainingIgnoreCase(talla)
+                .stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+        }
+
+        public List<ProductoResponseDTO> buscarProductosActivosPorPrecioJPQL(BigDecimal precioMax) {
+        log.info("Buscando productos activos por precio usando JPQL: {}", precioMax);
+
+        return productoRepository.buscarProductosActivosPorPrecioJPQL(precioMax)
+                .stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+        }
+
+        public List<ProductoResponseDTO> buscarPorNombreODescripcionJPQL(String texto) {
+        log.info("Buscando productos por nombre o descripción usando JPQL: {}", texto);
+
+        return productoRepository.buscarPorNombreODescripcionJPQL(texto)
+                .stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+        }
+
+        public List<ProductoResponseDTO> buscarProductosConStockMayorSQL(Integer stockMinimo) {
+        log.info("Buscando productos con stock mayor usando SQL nativo: {}", stockMinimo);
+
+        return productoRepository.buscarProductosConStockMayorSQL(stockMinimo)
+                .stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+        }
+
+        public List<ProductoResponseDTO> buscarProductosActivosPorCategoriaSQL(Long categoriaId) {
+        log.info("Buscando productos activos por categoría usando SQL nativo: {}", categoriaId);
+
+        return productoRepository.buscarProductosActivosPorCategoriaSQL(categoriaId)
+                .stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+        }
+
 }
